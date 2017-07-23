@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather App</title>
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="imgs/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="imgs/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="imgs/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="imgs/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="imgs/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="imgs/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="imgs/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="imgs/apple-touch-icon-152x152.png" />
+  <link rel="icon" type="image/png" href="imgs/favicon-196x196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="imgs/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="imgs/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="imgs/favicon-16x16.png" sizes="16x16" />
+  <link rel="icon" type="image/png" href="imgs/favicon-128.png" sizes="128x128" />
+
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="imgs/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="imgs/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="imgs/mstile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="imgs/mstile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="imgs/mstile-310x310.png" />
+  
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body class="loading">
+  <svg>
+    <defs>
+      <symbol id="umbrella" viewBox="0 0 77.24 85.44">
+        <title>umbrellapp-logo</title>
+        <path d="M76.8,39.25A38.83,38.83,0,0,0,40.28,6.45v-5a1.5,1.5,0,0,0-3,0V6.43A38.69,38.69,0,0,0,0,45c0,1,0,1.93.11,3a1.5,1.5,0,0,0,3-.08A8.15,8.15,0,0,1,18.81,45a1.55,1.55,0,0,0,1.42.93,1.5,1.5,0,0,0,1.38-1c.05-.15.12-.29.18-.42a8.15,8.15,0,0,1,15.49,3.55V78.24a7.2,7.2,0,1,0,14.4,0V76.16a1.5,1.5,0,0,0-3,0v2.08a4.12,4.12,0,0,1-.33,1.63,4.2,4.2,0,0,1-8.07-1.63V48.08a8.15,8.15,0,0,1,15.55-3.42,1.42,1.42,0,0,0,1.39.87,1.5,1.5,0,0,0,1.35-.92,1.47,1.47,0,0,1,.09-.19l.08-.16a8.15,8.15,0,0,1,15.34,3.82c0,.05,0,.1,0,.15a1.5,1.5,0,0,0,1.35,1.64h.15a1.5,1.5,0,0,0,1.49-1.35c.11-1.12.17-2.3.17-3.51A38.24,38.24,0,0,0,76.8,39.25ZM11.26,36.93a11.13,11.13,0,0,0-7.95,3.36q.11-.81.25-1.61c0-.17.07-.34.11-.51.07-.36.14-.72.22-1.07s.11-.42.16-.63.15-.62.23-.93.13-.43.19-.65.17-.59.27-.88.15-.43.23-.65.2-.57.3-.86.17-.43.26-.65.21-.55.33-.82.2-.44.3-.65.23-.53.36-.78.22-.43.33-.65.25-.51.39-.75.24-.43.36-.64.27-.48.41-.72l.4-.64c.14-.23.28-.46.43-.69l.43-.63.46-.66.46-.61.48-.63.5-.61.49-.59.54-.6.51-.56.57-.58.52-.53.6-.56.54-.5.64-.55.55-.46.67-.53.56-.43.7-.5.57-.4.74-.48L20,14.7l.77-.46.58-.34.79-.42.6-.31.81-.39.61-.29.83-.35.62-.26.86-.32.63-.23.87-.28.65-.21.88-.24.67-.18.88-.2.69-.15.88-.16.72-.12.52-.07A38.79,38.79,0,0,0,18.79,39.87,11.1,11.1,0,0,0,11.26,36.93Zm17.87,0a10.94,10.94,0,0,0-1.19.07l-.36,0c-.28,0-.56.09-.83.15l-.37.09c-.3.08-.59.17-.88.27l-.24.08a11.27,11.27,0,0,0-1.07.47l-.22.12q-.41.22-.81.47l-.29.19q-.37.25-.72.53l-.23.18-.14.11a35.78,35.78,0,0,1,15.5-28.78V40.5A11.1,11.1,0,0,0,29.13,36.93ZM40.28,40.5V10.77A35.76,35.76,0,0,1,56,39.92c-.12-.12-.26-.22-.39-.33l-.3-.25q-.4-.31-.82-.59l-.12-.08a11.23,11.23,0,0,0-1-.56L53.07,38c-.25-.11-.49-.22-.75-.32l-.4-.14-.73-.21-.42-.1c-.26-.06-.53-.1-.79-.14L49.61,37a11,11,0,0,0-9.33,3.51Zm25.66-3.57a11.11,11.11,0,0,0-7,2.44A38.77,38.77,0,0,0,44.09,9.83l.26,0,.8.15.78.15.8.18.75.18.79.22L49,11l.78.26.72.24.78.29L52,12l.77.33.67.29.76.37.65.32.75.4.62.34.73.44.6.36.71.47.58.39.69.5.56.41.68.53.54.43.66.57.51.45.63.59.5.47.6.61.48.5.57.64.46.52.54.66.44.54.51.68.42.56.48.7.4.58c.15.24.3.48.45.72l.37.6c.14.24.28.49.42.74l.35.62c.13.25.26.51.39.76s.22.42.32.63.23.51.35.77.2.44.3.66.21.52.32.78.18.45.27.67.19.55.29.82.16.44.23.66.17.56.25.84.14.45.2.67.14.57.22.85.12.46.17.69.13.62.19.94.09.42.13.63q.14.79.25,1.59A11.12,11.12,0,0,0,65.94,36.93Z"
+        />
+      </symbol>
+      <symbol id="holyo" viewBox="0 0 15 14.78">
+        <title>holy-O</title>
+        <path d="M0,13l1.49-1.47A7.09,7.09,0,0,1,.62,9.81,7.21,7.21,0,0,1,.8,4.52,7,7,0,0,1,2.37,2.17,7.55,7.55,0,0,1,4.71.58,7.54,7.54,0,0,1,7.6,0,7.24,7.24,0,0,1,10,.42a7,7,0,0,1,1.73.86L12.87.16l1.75,1.75L13.55,3a7,7,0,0,1,1,1.81,7.47,7.47,0,0,1-.12,5.45,7.46,7.46,0,0,1-1.59,2.33A7.41,7.41,0,0,1,5,14.3a7.11,7.11,0,0,1-1.83-1L1.77,14.78ZM2.86,7.38a4.66,4.66,0,0,0,.56,2.21L9.83,3.2A4.59,4.59,0,0,0,7.6,2.63,4.76,4.76,0,0,0,2.86,7.38Zm2.25,4a4.74,4.74,0,0,0,6.53-6.51Z"
+        />
+      </symbol>
+      <symbol id="burger" viewBox="0 0 35 21">
+        <title>burger</title>
+        <line class="top" y1="1.5" x2="35" y2="1.5" />
+        <line class="middle" y1="10.5" x2="35" y2="10.5" />
+        <line class="bot" y1="19.5" x2="35" y2="19.5" />
+      </symbol>
+      <symbol id="fav" viewBox="0 0 24.79 22">
+        <title>fav</title>
+        <path class="cls-1" d="M18.09,1a8.93,8.93,0,0,0-5.7,2A8.93,8.93,0,0,0,6.7,1C3.19,1,1,3.51,1,7.73S3.47,18.33,12.39,21c8.92-2.67,11.39-9,11.39-13.27S21.6,1,18.09,1Z"
+        />
+      </symbol>
+      <symbol id="search" viewBox="0 0 40 40">
+        <title>search</title>
+        <path class="cls-1" d="M17.68,10.22a7.42,7.42,0,1,0,7.41,7.42A7.42,7.42,0,0,0,17.68,10.22Z" />
+        <path class="cls-1" d="M0,0V40H40V0ZM32.29,32.33a1.49,1.49,0,0,1-1.06.44,1.53,1.53,0,0,1-1.06-.44L23.85,26A10.46,10.46,0,1,1,26,23.9l6.31,6.31A1.49,1.49,0,0,1,32.29,32.33Z"
+        />
+      </symbol>
+      <symbol id="geolocate" viewBox="0 0 24.8 25">
+        <title>geolocate</title>
+        <polygon points="0 12.18 12.5 12.18 12.5 25 24.8 0 0 12.18" />
+      </symbol>
+      <symbol id="gplus" viewBox="0 0 491.858 491.858">
+        <path d="M377.472,224.957H201.319v58.718H308.79c-16.032,51.048-63.714,88.077-120.055,88.077
+		c-69.492,0-125.823-56.335-125.823-125.824c0-69.492,56.333-125.823,125.823-125.823c34.994,0,66.645,14.289,89.452,37.346
+		l42.622-46.328c-34.04-33.355-80.65-53.929-132.074-53.929C84.5,57.193,0,141.693,0,245.928s84.5,188.737,188.736,188.737
+		c91.307,0,171.248-64.844,188.737-150.989v-58.718L377.472,224.957L377.472,224.957z" />
+        <polygon points="491.858,224.857 455.827,224.857 455.827,188.826 424.941,188.826 424.941,224.857 388.91,224.857
+				388.91,255.74 424.941,255.74 424.941,291.772 455.827,291.772 455.827,255.74 491.858,255.74 			" />
+      </symbol>
+      <symbol id="twitter" viewBox="0 0 612 612">
+        <path d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411
+			c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513
+			c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101
+			c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104
+			c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194
+			c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485
+			c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" />
+      </symbol>
+      <symbol id="facebook" viewBox="0 0 96.124 96.123">
+        <path d="M72.089,0.02L59.624,0C45.62,0,36.57,9.285,36.57,23.656v10.907H24.037c-1.083,0-1.96,0.878-1.96,1.961v15.803
+		c0,1.083,0.878,1.96,1.96,1.96h12.533v39.876c0,1.083,0.877,1.96,1.96,1.96h16.352c1.083,0,1.96-0.878,1.96-1.96V54.287h14.654
+		c1.083,0,1.96-0.877,1.96-1.96l0.006-15.803c0-0.52-0.207-1.018-0.574-1.386c-0.367-0.368-0.867-0.575-1.387-0.575H56.842v-9.246
+		c0-4.444,1.059-6.7,6.848-6.7l8.397-0.003c1.082,0,1.959-0.878,1.959-1.96V1.98C74.046,0.899,73.17,0.022,72.089,0.02z" />
+      </symbol>
+      <symbol id="back" viewBox="0 0 48 48">
+        <title>back</title>
+        <line x1="1.73" y1="24" x2="46.27" y2="24" />
+        <polyline points="16.95 39.22 1.73 24 16.95 8.78" />
+      </symbol>
+    </defs>
+  </svg>
+  <div id="loader">
+    <div class="logo">
+      <svg class="umbrellapp">
+        <use xlink:href="#umbrella"></use>
+      </svg>
+      <div>umbrellapp</div>
+    </div>
+    <svg class="holyo">
+      <use xlink:href="#holyo"></use>
+    </svg>
+  </div>
+  <div id="wrapper">
+    <div class="start-screen">
+      <form id="citysearch" onsubmit="citySearch(); return false;">
+        <label for="cityname">type a location</label>
+        <div class="cityname-wrapper">
+          <input type="text" id="cityname" placeholder="type here...">
+          <button type="submit">
+            <svg class="search">
+              <use xlink:href="#search"></use>
+            </svg>
+          </button>
+        </div>
+        <span class="messages hide"></span>
+      </form>
+      <form id="geolocate" onsubmit="getLocation(); return false;">
+        <label for="geolocation">or give us your location</label>
+        <button class="geolocation" name="geolocation" onclick="getLocation();">
+        <svg class="geolocate">
+            <use xlink:href="#geolocate"></use>
+          </svg>access location
+        </button>
+        <span class="messages hide"></span>
+      </form>
+    </div>
+    <div class="results">
+      <div class="today">
+        <div class="title">Today</div>
+        <div class="currentcity"></div>
+        <div class="weathericon">
+          <i></i>
+        </div>
+        <div class="temperatures">
+          <span class="max"></span>
+          <span class="min"></span>
+        </div>
+      </div>
+      <ul class="next-week">
+      </ul>
+      <div class="back" onclick="reload();">
+        <svg class="back">
+          <use xlink:href="#back"></use>
+        </svg>
+        Change Location
+      </div>
+  </div>
+  <div id="topbar">
+    <input type="checkbox" id="menu-trigger">
+    <div id="menu">
+      <div class="menu-items">
+        <div class="promo-text">
+          Your best weather app
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li>
+              <a href="#">team</a>
+            </li>
+            <li>
+              <a href="#">history</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="share">
+        <div class="suggest">
+          suggest to a friend
+        </div>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=http://holy.gd/weatherApp/" target="_blank">
+            <svg class="facebook">
+              <use xlink:href="#facebook"></use>
+            </svg>
+          </a>
+          <a href="https://twitter.com/home?status=http%3A//holy.gd/weatherApp/" target="_blank">
+            <svg class="twitter">
+              <use xlink:href="#twitter"></use>
+            </svg>
+          </a>
+          <a href="https://plus.google.com/share?url=http%3A//holy.gd/weatherApp/" target="_blank">
+            <svg class="gplus">
+              <use xlink:href="#gplus"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <label for="menu-trigger">
+      <svg class="burger" id="burger" viewBox="0 0 35 35">
+        <title>burger</title>
+        <line class="top" x1="1.6" y1="8.5" x2="33.4" y2="8.5"/>
+        <line class="mid" x1="1.6" y1="17.5" x2="33.4" y2="17.5"/>
+        <line class="mid-hidden" x1="1.6" y1="17.5" x2="33.4" y2="17.5"/>
+        <line class="bot" x1="1.6" y1="26.5" x2="33.4" y2="26.5"/>
+      </svg>
+    </label>
+    <svg class="umbrella" onclick="reload();">
+      <use xlink:href="#umbrella"></use>
+    </svg>
+    <div class="addtofav" onclick="bookmarkMe(); return false;">
+      <span class="text">
+        Add to favorites
+        </span>
+      <svg class="fav">
+        <use xlink:href="#fav"></use>
+      </svg>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  
+</body>
+
+</html>

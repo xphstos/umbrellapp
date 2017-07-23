@@ -1,0 +1,476 @@
+@import '_variables'
+@import '_mixins'
+@import '_fonts'
+
+
+html, body
+  height 100%
+  font-family Biko, sans-serif
+  font-size 18px
+  line-height 1.5
+  color white
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+*
+  box-sizing border-box
+
+::selection
+  background yellow
+  color black
+
+::-webkit-input-placeholder 
+  color rgba(white, .7)
+  opacity 1
+  transition opacity .3s ease
+::-moz-placeholder
+  color rgba(white, .7)
+  opacity 1
+  transition opacity .3s ease
+:-moz-placeholder
+  color rgba(white, .7)
+  opacity 1
+  transition opacity .3s ease
+:-ms-input-placeholder
+  color rgba(white, .7)
+  opacity 1
+  transition opacity .3s ease
+input
+  &:focus 
+    &::-webkit-input-placeholder 
+      opacity 0
+    &::-moz-placeholder
+      opacity 0
+    &:-moz-placeholder
+      opacity 0
+    &:-ms-input-placeholder
+      opacity 0
+
+ul
+  padding 0
+  margin 0
+  list-style-type none
+
+a
+  text-decoration none
+  color inherit
+
+button
+  border none
+  outline none
+  font-family Biko, sans-serif
+  font-size 1rem
+
+
+body
+  margin 0
+  padding 2rem
+  box-sizing border-box
+  background-color pink
+  transition background-color 1s ease
+  +below(420px)
+    padding 1rem
+  // Topbar styles
+  #topbar
+    display flex
+    justify-content space-between
+    align-items center
+    width 100%
+    position absolute
+    left 0
+    top 0
+    padding 2rem
+    +below(420px)
+      padding 1rem
+    &.show
+      animation show 2s ease forwards
+    #menu-trigger
+      position absolute
+      opacity 0
+      height 0
+      width 0
+      &:checked
+        ~ #menu
+          opacity 1
+          transform translateX(0rem)
+          box-shadow 0 5px 40px 0 rgba(black, .2)
+        ~ label
+          .burger
+            stroke rgba(black,.6)
+            line
+              transition stroke .6s ease, transform .6s ease
+            .top, .bot
+              stroke none
+            .mid-hidden
+              opacity 1
+              transform rotate(-45deg)
+              transform-origin 50%
+            .mid
+              transform rotate(45deg)
+              transform-origin 50%
+        ~ .addtofav
+            opacity 0
+    #menu
+      display flex
+      width 20rem
+      top 0
+      left 0
+      opacity 0
+      height 100vh
+      position absolute
+      padding 2rem
+      justify-content flex-start
+      align-items center
+      text-align left
+      background-color green
+      transform translateX(-20rem)
+      z-index 5
+      box-shadow 0 0 0 0 rgba(black, .2)
+      transition opacity .6s ease, transform .6s ease, box-shadow 1s ease
+      +below(420px)
+        width 100%
+      .promo-text
+        font-size 2rem
+        line-height 1.25
+        margin-bottom 20%
+        max-width 45%
+        +below(420px)
+          max-width 60%
+          font-size 1.75rem
+      .nav-links
+        &:before
+          content ''
+          display block
+          height 3px
+          width 2rem
+          background-color purple
+          margin-bottom 1.5rem
+        li
+          display block
+          width 100%
+          a
+            font-size 2rem
+            color purple
+            tr(color)
+            +below(420px)
+              font-size 1.75rem
+            &:hover
+              color rgba(black,.6)
+      .share
+        position absolute
+        bottom 4rem
+        +below(420px)
+          bottom 1rem
+        .suggest
+          color purple
+          font-size 1.5rem
+          margin-bottom 1rem
+          +below(420px)
+            font-size 1.25rem
+        .social-icons
+          a
+            margin 2rem 0
+            padding .75rem
+            &:first-child
+              padding-left 0
+            svg
+              fill purple
+              width 25px
+              height 25px
+              vertical-align middle
+              tr(fill)
+            &:hover svg
+              fill rgba(black,.6)
+    label
+      display flex
+      z-index 10
+      .burger
+        width 35px
+        height 35px
+        fill none
+        stroke green
+        stroke-linecap round
+        stroke-miterlimit 10
+        stroke-width 3px
+        cursor pointer
+        tr(stroke)
+        .mid-hidden
+          opacity 0
+        &:hover
+          stroke rgba(black,.6)
+    .umbrella
+      position absolute
+      width 48px
+      height 48px
+      left calc(50% - 24px)
+      fill rgba(black,.5)
+      cursor pointer
+    .addtofav
+      display none
+      opacity 0
+      cursor pointer
+      align-items center
+      position relative
+      tr(opacity)
+      .text
+        color white
+        +below(590px)
+          display none
+      &:hover
+        .fav
+          fill white
+    .fav
+      margin-left .5rem
+      width 20px
+      height 20px
+      display inline-block
+      fill transparent
+      stroke white
+      stroke-linecap round
+      stroke-linejoin round
+      stroke-width 2px
+      tr(fill)
+      +below(590px)
+        width 30px
+        height 30px
+
+  > svg
+    display none
+  // when the page is loading
+  &.loading
+    #topbar, #wrapper
+      display none
+    .start-screen, .results
+      visibility visible
+      opacity 0
+    #loader
+      position relative
+      display flex
+      height 100%
+      align-items center
+      justify-content center
+      .logo
+        margin auto
+        text-align center
+        font-size 1.5rem
+        color white
+        .umbrellapp
+          width 85px
+          height 85px
+          margin-bottom 1.5rem
+          fill rgba(black, .5)
+      .holyo
+        position absolute
+        width 15px
+        height 15px
+        bottom 0
+        left calc(50% - 15px/2)
+        fill white
+  // end of loading
+  // the page has load
+  #loader
+    display none
+  #wrapper
+    display flex
+    height 100%
+    align-items center
+    justify-content center
+    .start-screen
+      visibility visible
+      opacity 0
+      &.show
+        animation: show 1s ease forwards;
+    .results
+      display none
+    // start screen starts
+    .start-screen
+      text-align center
+      +below(590px)
+        max-width 90%
+      label
+        display block
+        width 100%
+        font-size 1.25rem
+        margin .75rem 0
+      .messages.hide
+        display none
+      .messages
+        display block
+        width 100%  
+      #citysearch
+        &:before,
+        &:after
+          content ''
+          display table
+        &:after
+          clear both
+        div
+          display flex
+          align-items stretch
+          margin .5rem 0
+          box-shadow 0 5px 40px 0 rgba(black, .2)
+          tr(box-shadow)
+          &:hover
+            box-shadow 0 0px 20px 0 rgba(black, .2)
+          input
+            font-family Biko, sans-serif
+            font-size: 1.25rem
+            background-color purple
+            padding 0.75rem 1rem
+            border none
+            outline none
+            color #fff
+            +below(590px)
+              max-width 80%
+          button
+            background-color purple
+            height 53px
+            cursor pointer
+            .search
+              width 40px
+              height 40px
+              vertical-align middle
+              fill white
+              cursor pointer
+              box-shadow 0 5px 50px 0 rgba(black, .1)
+      #geolocate
+        button
+          display block
+          width 100%
+          background-color green
+          padding 0.75rem 1rem
+          margin .5rem 0
+          font-size: 1.25rem
+          border none
+          outline none
+          color purple
+          cursor pointer
+          box-shadow 0 5px 40px 0 rgba(black, .2)
+          tr(box-shadow)
+          .geolocate
+            width 25px
+            height 25px
+            fill purple
+            margin-right .75rem
+            vertical-align middle
+          &:hover
+            box-shadow 0 0px 20px 0 rgba(black, .2)
+    // start screen ends
+  // start of results
+  &.results
+    background-color purple
+    #topbar
+      .addtofav
+        opacity 1
+        display flex
+    #wrapper
+      .start-screen
+        display none
+      .results
+        display block
+        font-size 1.10rem
+        visibility visible
+        opacity 0
+        &.show
+          animation show 1s ease forwards
+          +below(557px)
+            width 100%
+            padding-top 15vh
+            padding-bottom 8vh
+            align-self flex-start
+        .back
+          text-align center
+          color rgba(black,.6)
+          font-weight bold
+          font-size .85rem
+          cursor pointer
+          tr(color)
+          &:hover
+            color: green
+          &:hover .back
+            stroke green
+          svg.back
+            fill none
+            stroke rgba(black,.6)
+            stroke-linecap round-clip
+            stroke-linejoin round-clip
+            stroke-width 3px
+            width 25px
+            height 25px
+            vertical-align middle
+            margin-right .5rem
+            tr(stroke)
+        .today
+          text-align center
+          margin-bottom 8vh
+          +below(557px)
+              font-size 1.5rem
+          .title
+            text-transform uppercase
+            color green
+            opacity .6
+          .weathericon 
+            margin 1rem 0
+            i
+              font-size 5rem
+              +below(557px)
+                font-size 6rem
+          .temperatures
+            span
+              display block
+              color green
+              font-size 1.25rem
+              font-weight bold
+              +below(557px)
+                font-size 1.5rem
+              &:last-child
+                opacity .6
+        ul.next-week
+          margin-bottom 2rem
+          li
+            display inline-block
+            margin-right 3rem
+            text-align center
+            +below(557px)
+              margin-right 0
+              display flex
+              justify-content space-around
+              align-items center
+              border-bottom 1px solid purple + -20
+            &:last-child
+              margin-right 0
+              +below(557px)
+                border-bottom none
+          .day
+            text-transform uppercase
+            font-size .85rem
+            +below(557px)
+              font-size 1rem
+          .weathericon 
+           margin 1rem 0
+           text-align center
+           i
+            font-size 3rem
+            +below(557px)
+              font-size 4rem
+          .temperatures
+            span
+              display block
+              color green
+              font-size .85rem
+              font-weight bold
+              +below(557px)
+                font-size 1rem
+              &:last-child
+                opacity .6
+
+            
+
+@keyframes show
+  0%
+    visibility visible
+    transform translateY(-1rem) 
+    opacity 0
+  100%
+    opacity 1
+    transform translateY(0)

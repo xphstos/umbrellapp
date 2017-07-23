@@ -1,0 +1,25 @@
+{
+  "name": "holyweather",
+  "version": "1.0.0",
+  "description": "npm ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xphstos/holyWeather.git"
+  },
+  "author": "Chris Gotsikas",
+  "license": "GNU GPLv3",
+  "bugs": {
+    "url": "https://github.com/xphstos/holyWeather/issues"
+  },
+  "homepage": "https://github.com/xphstos/holyWeather#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-stylus": "^2.6.0",
+    "rupture": "^0.6.2"
+  }
+}
